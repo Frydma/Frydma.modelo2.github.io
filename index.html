@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Módulo 2: Creación de Contenido Turístico con IA - Diversificación Tecnológica</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #F8FAFC;
+      scroll-behavior: smooth;
+    }
+    .interactive-card {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .interactive-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+    }
+  </style>
+</head>
+<body class="text-slate-800 min-h-screen flex flex-col justify-between antialiased">
+
+  <header class="bg-[#0B192E] text-white py-16 px-6 md:px-12 relative overflow-hidden shadow-xl border-b border-slate-800">
+    <div class="absolute -right-24 -top-24 w-96 h-96 bg-blue-600 opacity-10 rounded-full blur-3xl"></div>
+    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center mix-blend-overlay opacity-10"></div>
+
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8 relative z-10">
+      <div class="max-w-3xl">
+        
+        <div class="flex flex-wrap items-center gap-4 mb-6">
+          <img src="cropped-logo-cetasdi-actualizado.jpg.jpeg" alt="Logo Cetasdi" class="h-12 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
+          <img src="logo-la-ceja.png" alt="Logo La Ceja" class="h-12 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
+          <img src="logo-la-ceja-cuida-y-florece.png" alt="Logo La Ceja Cuida y Florece" class="h-12 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+          <span class="bg-amber-500 text-slate-950 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-md shadow-sm">Módulo 2 Renovado</span>
+          <span class="bg-slate-900 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-md border border-blue-800">Taller de Co-Creación de Contenidos</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-black mt-4 tracking-tight leading-tight text-white">
+          Creación de Contenido Turístico <br class="hidden md:inline">con Nuevas Herramientas de IA
+        </h1>
+        <p class="text-slate-300 mt-4 text-base md:text-lg leading-relaxed font-normal max-w-2xl">
+          Estructura de <strong>6 horas académicas</strong>. Domina el copywriting en tiempo real con Gemini, la síntesis visual comercial en Adobe Firefly y la maquetación inteligente automatizada con Gamma App.
+        </p>
+      </div>
+      
+      <div class="bg-slate-900 border border-slate-700/60 rounded-2xl p-6 text-center min-w-[200px] shadow-2xl shrink-0 self-stretch md:self-auto flex flex-col justify-center">
+        <span class="block text-xs text-amber-400 font-bold uppercase tracking-wider">Carga Académica</span>
+        <span class="block text-4xl font-black text-white my-1">6 Horas</span>
+        <div class="text-[11px] text-slate-400 block border-t border-slate-800 pt-2 mt-2 font-medium">
+          <div class="flex justify-between mb-1"><span>Estrategia y Copy</span><span class="text-white">2h</span></div>
+          <div class="flex justify-between"><span>Diseño y Ensamble</span><span class="text-white">4h</span></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-40 shadow-sm backdrop-blur-md bg-white/95">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-semibold uppercase tracking-wider text-slate-500">
+      <span class="flex items-center gap-1.5 text-slate-900 font-bold"><i data-lucide="compass" class="w-4 h-4 text-blue-600"></i> Ruta de Aprendizaje:</span>
+      <div class="flex flex-wrap gap-4 md:gap-6">
+        <a href="#copywriting" class="hover:text-blue-700 transition-colors flex items-center gap-1"><span>01. Real-Time Copy</span> <span class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded text-[10px]">1h</span></a>
+        <a href="#itinerarios" class="hover:text-blue-700 transition-colors flex items-center gap-1"><span>02. Itinerarios Locales</span> <span class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded text-[10px]">1h</span></a>
+        <a href="#ecosistema-visual" class="hover:text-blue-700 transition-colors flex items-center gap-1"><span>03. Fusión Multi-IA</span> <span class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded text-[10px]">1h</span></a>
+        <a href="#laboratorio-dos" class="text-blue-700 font-bold flex items-center gap-1"><span>04. Taller de Alto Impacto</span> <span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded text-[10px]">3h</span></a>
+      </div>
+    </div>
+  </div>
+
+  <main class="max-w-6xl mx-auto px-4 md:px-8 py-12 w-full flex-grow space-y-16">
+    
+    <section id="copywriting" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-slate-200/60 scroll-mt-20">
+      <div class="flex items-center gap-3 border-b border-slate-100 pb-5 mb-8">
+        <div class="p-2.5 bg-blue-50 rounded-xl text-blue-700">
+          <i data-lucide="sparkles" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">1. Copywriting Turístico e Indexación en Tiempo Real</h2>
+          <p class="text-slate-500 text-xs md:text-sm mt-0.5">Aprovechamiento del motor analítico de Google Gemini para redactar textos comerciales basados en tendencias actuales.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7 space-y-5 text-slate-600 leading-relaxed text-sm md:text-base">
+          <p>
+            Al avanzar en la creación de contenido, el estudiante debe aprender a conectar las necesidades de su audiencia con las tendencias del entorno. <strong>Google Gemini</strong> ofrece la ventaja de conectarse de forma nativa a internet en tiempo real para rastrear qué buscan los viajeros en Antioquia.
+          </p>
+          <p>
+            Utilizando la fórmula persuasiva <strong>AIDA</strong> (Atención, Interés, Deseo, Acción), entrenaremos a Gemini para estructurar narrativas comerciales que capturen la esencia de La Ceja: sus rutas biciturísticas, sus tradicionales toldos de postres y su patrimonio floricultor, garantizando que cada copy resuene con los intereses del turista moderno.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 relative group">
+          <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-100 bg-white p-3">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Escritura digital creativa" class="w-full h-52 object-cover rounded-xl mb-4">
+            <div class="px-2 py-2 bg-slate-900 rounded-xl text-white">
+              <span class="block text-xs font-bold uppercase tracking-wider text-sky-400 mb-1 flex items-center gap-1">
+                <i data-lucide="globe" class="w-3 h-3"></i> Conexión en Vivo e Insights
+              </span>
+              <p class="text-[11px] text-slate-300 font-light leading-normal">
+                Gemini integra datos actualizados de eventos locales, como el flujo de visitantes en las Fiestas del Toldo y las Flores, para redactar propuestas precisas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="itinerarios" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-slate-200/60 scroll-mt-20">
+      <div class="flex items-center gap-3 border-b border-slate-100 pb-5 mb-8">
+        <div class="p-2.5 bg-blue-50 rounded-xl text-blue-700">
+          <i data-lucide="map-pinned" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">2. Diseño de Itinerarios Turísticos con Identidad Territorial</h2>
+          <p class="text-slate-500 text-xs md:text-sm mt-0.5">Planificación cronológica y estructuración de rutas que destaquen el patrimonio y los atractivos de La Ceja.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
+          <p>
+            Un portafolio turístico competitivo no vende camas ni platos de comida sueltos; vende días memorables de experiencias organizadas. El uso de la IA permite a los prestadores locales estructurar hojas de ruta reales, calculando distancias, tiempos de descanso y paradas estratégicas.
+          </p>
+          <p>
+            El objetivo en esta fase es programar al motor de IA para entrelazar la oferta del negocio del estudiante con la riqueza del municipio: biciturismo en las veredas San Gerardo o La Resma, recorridos interactivos por fincas agroturísticas florales o catas de café de origen en la plaza principal.
+          </p>
+        </div>
+        
+        <div class="bg-slate-50 border border-slate-200/60 rounded-2xl p-5 space-y-3 font-light text-xs text-slate-600">
+          <h4 class="font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 border-b border-slate-200 pb-2">
+            <i data-lucide="calendar-days" class="w-4 h-4 text-blue-600"></i> Matriz de Planificación Diaria
+          </h4>
+          <p><strong>Mañana Inmersiva:</strong> Recorrido guiado por senderos ecológicos locales o fincas de hortensias.</p>
+          <p><strong>Tarde Gastronómica:</strong> Almuerzo tradicional y ruta de postres artesanales en los toldos del parque.</p>
+          <p><strong>Cierre Cultural:</strong> Talleres manuales interactivos de diseño floral o catas de café de origen.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="ecosistema-visual" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-slate-200/60 scroll-mt-20">
+      <div class="flex items-center gap-3 border-b border-slate-100 pb-5 mb-8">
+        <div class="p-2.5 bg-emerald-50 rounded-xl text-emerald-700">
+          <i data-lucide="repeat" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">3. Orquestación Multi-IA Avanzada: El Flujo Alternativo</h2>
+          <p class="text-slate-500 text-xs md:text-sm mt-0.5">Estudio de herramientas alternativas para ampliar las competencias digitales del estudiante.</p>
+        </div>
+      </div>
+
+      <p class="text-slate-600 text-sm md:text-base mb-8 max-w-4xl">
+        Para enriquecer el perfil técnico de tus alumnos, el flujo de producción del Módulo 2 integrará tres plataformas totalmente diferentes a las del Módulo 1, logrando un proceso de ensamble ágil y profesional:
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-light">
+        <div class="border border-slate-200 rounded-2xl p-5 bg-white shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center mb-4 font-bold text-sm">1</div>
+            <h3 class="font-bold text-slate-900 text-base">Google Gemini</h3>
+            <span class="text-slate-400 text-xs font-medium block mt-0.5 mb-2">Lógica Estratégica y Texto</span>
+            <p class="text-slate-600 text-xs md:text-sm leading-relaxed">Asume la estructura del plan de marketing. Redacta el copy bajo la fórmula AIDA, organiza las paradas lógicas del itinerario y genera las descripciones visuales técnicas.</p>
+          </div>
+        </div>
+        <div class="border border-slate-200 rounded-2xl p-5 bg-white shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center mb-4 font-bold text-sm">2</div>
+            <h3 class="font-bold text-slate-900 text-base">Adobe Firefly</h3>
+            <span class="text-slate-400 text-xs font-medium block mt-0.5 mb-2">Síntesis Gráfica Comercial</span>
+            <p class="text-slate-600 text-xs md:text-sm leading-relaxed">Interpreta los prompts artísticos. Genera fotografías publicitarias hiperrealistas de los entornos andinos de La Ceja sin problemas de derechos de autor.</p>
+          </div>
+        </div>
+        <div class="border border-slate-200 rounded-2xl p-5 bg-white shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-4 font-bold text-sm">3</div>
+            <h3 class="font-bold text-slate-900 text-base">Gamma App</h3>
+            <span class="text-slate-400 text-xs font-medium block mt-0.5 mb-2">Maquetación Automatizada Express</span>
+            <p class="text-slate-600 text-xs md:text-sm leading-relaxed">Actúa como la mesa de ensamble gráfico modular. Genera de forma inteligente carruseles visuales interactivos organizando texto e imágenes mediante algoritmos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="laboratorio-dos" class="bg-slate-950 text-white rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden border border-slate-800 scroll-mt-20">
+      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-sky-600 opacity-10 rounded-full blur-3xl"></div>
+      
+      <div class="flex items-center gap-3 border-b border-slate-800 pb-5 mb-8">
+        <div class="p-2.5 bg-sky-500/10 text-sky-400 rounded-xl border border-sky-500/20">
+          <i data-lucide="package" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold tracking-tight">4. Laboratorio de Alta Competitividad: Carrusel Turístico Premium</h2>
+          <p class="text-slate-400 text-xs md:text-sm mt-0.5">Reto práctico avanzado de 3 horas orquestando un flujo continuo de Inteligencias Artificiales cruzadas.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-10 text-xs md:text-sm font-light">
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+          <span class="text-sky-400 font-bold block uppercase tracking-wider text-[11px] mb-1">El Desafío Comercial</span>
+          <span class="text-slate-300">Diseñar un carrusel o dossier publicitario digital de alta definición para vender una experiencia o ruta exclusiva en el municipio de La Ceja, Antioquia.</span>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+          <span class="text-emerald-400 font-bold block uppercase tracking-wider text-[11px] mb-1">Ecosistema Alternativo</span>
+          <span class="text-slate-300">Fase 1: Google Gemini (Estructura AIDA) <br>Fase 2: DeepL (Traducción de Estilo) <br>Fase 3: Adobe Firefly o Bing Image Creator <br>Fase 4: Gamma App (Ensamble y maquetación final).</span>
+        </div>
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
+          <span class="text-orange-400 font-bold block uppercase tracking-wider text-[11px] mb-1">Producto Final Entregable</span>
+          <span class="text-slate-300">Enlace de acceso a la pieza digital finalizada compartida desde Gamma App junto con la bitácora técnica de prompts en PDF.</span>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-bold text-slate-200 mb-6 flex items-center gap-2">
+        <i data-lucide="play-circle" class="w-5 h-5 text-sky-400"></i> Protocolo de Trabajo Técnico Avanzado (3 Horas de Ejecución)
+      </h3>
+
+      <div class="space-y-8 text-sm md:text-base text-slate-300 border-l border-slate-800 pl-6 ml-2 relative">
+        
+        <div class="relative">
+          <div class="absolute -left-[35px] top-0.5 bg-slate-900 text-slate-300 border border-slate-700 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shadow-md">1</div>
+          <h4 class="font-bold text-white text-base">Fase 1: Ingeniería de Contenidos y Redacción AIDA en Gemini (45 Minutos)</h4>
+          <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed">
+            Ingresa al modelo conversacional <a href="https://gemini.google.com" target="_blank" class="text-sky-400 underline hover:text-sky-300">Google Gemini</a>. Personaliza las variables entre corchetes <code>[ ]</code> del siguiente prompt maestro y ejecútalo para estructurar la base de tu contenido promocional.
+          </p>
+
+          <div class="bg-slate-950 text-slate-300 rounded-xl p-5 relative font-mono text-xs md:text-sm border border-slate-800 shadow-inner mt-4">
+            <button onclick="copyPromptToClipboard('prompt-m2-texto')" class="absolute right-3 top-3 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold py-1.5 px-3 rounded-lg flex items-center gap-1.5 transition-colors shadow shadow-black">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copiar Prompt de Texto
+            </button>
+            <div id="prompt-m2-texto" class="whitespace-pre-line pr-16 pt-4 leading-relaxed text-slate-400 select-all">
+              [ROL]: Actúa como un redactor publicitario senior (Copywriter) especializado en marketing turístico y desarrollo de portafolios comerciales para el Oriente Antioqueño.
+              [CONTEXTO]: Estoy diseñando un contenido digital premium para mi negocio turístico ubicado en el municipio de La Ceja, Antioquia. Mi producto consiste en [Escribe con precisión qué es tu negocio o ruta, ej: un tour guiado de biciturismo por las fincas floricultoras / tardes de café y repostería artesanal tradicional en los toldos]. Mi público objetivo son profesionales y familias de Medellín que buscan experiencias de fin de semana con identidad local.
+              [TAREA]: Desarrolla los siguientes bloques de contenido para mi campaña comercial de forma obligatoria y separada:
+          1. Un título persuasivo de alto impacto y un subtítulo centrado en el beneficio.
+          2. Un cuerpo de texto comercial aplicando la fórmula AIDA (Atención, Interés, Deseo, Acción) que incentive la reserva.
+          3. Un micro-itinerario cronológico de 3 momentos sugeridos para vivir en la experiencia.
+          4. Una instrucción visual de diseño detallada en inglés (Prompt Visual) optimizada para generar una fotografía publicitaria fotorrealista del entorno.
+          5. SECCIÓN ADICIONAL: Un listado exclusivo con exactamente 5 palabras clave estéticas en español que definan la atmósfera, el color y la iluminación de la escena.
+          [ESPECIFICACIÓN]: Presenta los resultados organizados de forma limpia con títulos claros para cada uno de los 5 puntos. Mantén un tono elegante, hospitalario y altamente corporativo.
+
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -left-[35px] top-0.5 bg-slate-900 text-slate-300 border border-slate-700 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shadow-md">2</div>
+          <h4 class="font-bold text-white text-base">Fase 2: Traducción Técnica Estética con DeepL (15 Minutos)</h4>
+          <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed">
+            Toma las 5 palabras clave estéticas en español generadas en el paso anterior. Ingresa al traductor inteligente <a href="https://www.deepl.com" target="_blank" class="text-teal-400 underline font-semibold">DeepL.com</a> y tradúcelas al inglés. Al usar DeepL asegurarás que los modismos estéticos técnicos (ej: <em>"Golden Hour", "Cinematic lighting", "Moody atmosphere"</em>) se mantengan intactos, optimizando la posterior lectura del motor visual.
+          </p>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -left-[35px] top-0.5 bg-slate-900 text-slate-300 border border-slate-700 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shadow-md">3</div>
+          <h4 class="font-bold text-white text-base">Fase 3: Renderizado Fotográfico de Entornos (1 Hora)</h4>
+          <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed mb-4">
+            Abre tu motor de generación visual sintética estática (<a href="https://firefly.adobe.com" target="_blank" class="text-orange-400 underline font-semibold">Adobe Firefly</a> o <a href="https://www.bing.com/images/create" target="_blank" class="text-sky-400 underline font-semibold">Bing Image Creator</a>). Construye una instrucción en inglés combinando el tema de tu negocio de La Ceja junto con las palabras estéticas que tradujiste en DeepL.
+          </p>
+          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-xs text-slate-400 space-y-3">
+            <p>• <strong>Si utilizas Bing Image Creator:</strong> El sistema procesará imágenes cuadradas en escala 1:1 por defecto, ideales para cuadrículas de redes sociales.</p>
+            <p>• <strong>Si utilizas Adobe Firefly:</strong> Podrás configurar el menú lateral para elegir dimensiones de aspecto horizontal o vertical según requiera tu diseño corporativo.</p>
+          </div>
+          <p class="text-slate-400 text-xs md:text-sm mt-4">Ejecuta las generaciones de prueba, aplica filtros de fotografía hiperrealista y descarga en alta resolución las piezas de mayor fidelidad visual.</p>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -left-[35px] top-0.5 bg-slate-900 text-slate-300 border border-slate-700 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shadow-md">4</div>
+          <h4 class="font-bold text-white text-base">Fase 4: Maquetación y Ensamble Automatizado en Gamma App (1 Hora)</h4>
+          <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed">
+            Ingresa a la suite <a href="https://gamma.app" target="_blank" class="text-emerald-400 underline font-semibold">Gamma.app</a> de forma gratuita. Seguiremos este protocolo para estructurar tu pieza final de forma fluida:
+          </p>
+          <div class="mt-4 bg-slate-900 border border-slate-800 p-4 rounded-xl text-xs md:text-sm space-y-2 font-light">
+            <span class="text-slate-200 block font-bold mb-1"><i data-lucide="check-square" class="w-4 h-4 text-emerald-400 inline mr-1 shadow-sm"></i> Protocolo de Armado en Gamma:</span>
+            <p>1. En el panel principal, haz clic en el botón superior <strong>"Crear nuevo con IA"</strong> y selecciona la alternativa de cuadro de comandos de texto.</p>
+            <p>2. Elige el formato corto seleccionando la categoría de <strong>"Post para redes sociales / Carrusel"</strong> o documento modular.</p>
+            <p>3. En el recuadro de información, copia y pega los textos persuasivos con la estructura AIDA y el micro-itinerario cronológico generados por Gemini en la Fase 1.</p>
+            <p>4. Selecciona un tema de estilo visual que combine tonos limpios y profesionales. La IA organizará de forma automática los textos dentro de tarjetas informativas separadas.</p>
+            <p>5. Reemplaza las imágenes de stock genéricas del lienzo arrastrando y soltando la fotografía publicitaria fotorrealista que descargaste en la Fase 3 de Adobe Firefly.</p>
+            <p>6. Haz clic en el menú superior </strong>"Compartir" &rarr; "Publicar en la web"</strong>, copia el enlace público interactivo y añádelo a tu bitácora técnica en PDF para subir la entrega formal a la plataforma del curso.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <div id="toast-notif" class="fixed bottom-6 right-6 bg-slate-900 border border-slate-800 text-white text-sm py-4 px-6 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300 z-50">
+    <div class="w-5 h-5 bg-emerald-500 text-slate-950 rounded-full flex items-center justify-center shadow shadow-emerald-400"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+    <span class="font-medium text-xs md:text-sm">Estructura del prompt de contenido copiada con éxito.</span>
+  </div>
+
+  <footer class="bg-slate-950 text-slate-400 text-center py-8 px-6 border-t border-slate-900 text-xs">
+    <div class="max-w-6xl mx-auto space-y-2">
+      
+      <div class="flex flex-wrap items-center justify-center gap-6 mb-4">
+        <img src="cropped-logo-cetasdi-actualizado.jpg.jpeg" alt="Logo Cetasdi" class="h-10 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
+        <img src="logo-la-ceja.png" alt="Logo La Ceja" class="h-10 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
+        <img src="logo-la-ceja-cuida-y-florece.png" alt="Logo La Ceja Cuida y Florece" class="h-10 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
+      </div>
+
+      <p class="font-bold text-slate-200 text-sm tracking-wide">La Ceja de las Flores y las Bicicletas - Territorio Turístico Inteligente</p>
+      <p class="text-slate-500">Programa Internacional de Innovación y Alta Competitividad Comercial con Inteligencia Artificial.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Inicializa los íconos de la librería Lucide
+    lucide.createIcons();
+
+    // Sistema seguro para copiar código de texto en el portapapeles
+    function copyPromptToClipboard(id) {
+      const contenidoPrompt = document.getElementById(id).innerText;
+      
+      const elementoAuxiliar = document.createElement("textarea");
+      elementoAuxiliar.value = contenidoPrompt;
+      document.body.appendChild(elementoAuxiliar);
+      elementoAuxiliar.select();
+      document.execCommand("copy");
+      document.body.removeChild(elementoAuxiliar);
+
+      // Despliegue visual de la alerta Toast
+      const toast = document.getElementById("toast-notif");
+      toast.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
+      toast.classList.add("opacity-100", "translate-y-0");
+
+      // Ocultar notificación de forma automática
+      setTimeout(() => {
+        toast.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
+        toast.classList.remove("opacity-100", "translate-y-0");
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
