@@ -4,89 +4,414 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Módulo 2: Creación de Contenido Turístico con IA - Diversificación Tecnológica</title>
-  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+    
+    /* STYLES VANILLA (Reemplazo total de Tailwind para independencia de CDN) */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Plus Jakarta Sans', sans-serif;
       background-color: #F8FAFC;
+      color: #1E293B;
+      line-height: 1.6;
       scroll-behavior: smooth;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
+
+    /* Header & Gradient Modulo 2 */
+    .gradient-brand {
+      background-color: #0B192E;
+      color: #FFFFFF;
+      padding: 4rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid #1E293B;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    .header-container {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      position: relative;
+      z-index: 10;
+    }
+    @media (min-width: 768px) {
+      .header-container { flex-direction: row; justify-content: space-between; align-items: center; }
+    }
+
+    /* Logos Bar */
+    .brand-logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .brand-logos img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.9);
+      padding: 4px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+
+    /* Badges Modulo 2 */
+    .badges-flex { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+    .badge-mod {
+      background-color: #F59E0B;
+      color: #020617;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 12px;
+      border-radius: 6px;
+    }
+    .badge-sub {
+      background-color: #0F172A;
+      color: #93C5FD;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #1E40AF;
+    }
+
+    /* Header Typography */
+    .header h1 {
+      font-size: 2.25rem;
+      font-weight: 900;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      margin-top: 1rem;
+      color: #FFFFFF;
+    }
+    @media (min-width: 768px) { .header h1 { font-size: 3rem; } }
+    .header p {
+      color: #CBD5E1;
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: 400;
+      max-width: 42rem;
+    }
+    @media (min-width: 768px) { .header p { font-size: 1.125rem; } }
+
+    /* Academic Card */
+    .academic-card {
+      background-color: #0F172A;
+      border: 1px solid rgba(51, 65, 85, 0.6);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      text-align: center;
+      min-width: 200px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      flex-shrink: 0;
+    }
+    .academic-card .tag { font-size: 0.75rem; color: #FBBF24; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+    .academic-card .hours {
+      font-size: 2.255rem;
+      font-weight: 900;
+      color: #FFFFFF;
+      margin: 0.25rem 0;
+    }
+    .academic-card .breakdown {
+      border-top: 1px solid #1E293B;
+      padding-top: 0.5rem;
+      margin-top: 0.5rem;
+      font-size: 11px;
+      color: #94A3B8;
+      font-weight: 500;
+    }
+    .academic-card .row { display: flex; justify-content: space-between; margin-bottom: 0.25rem; }
+
+    /* Sticky Navbar */
+    .sticky-nav {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-bottom: 1px solid #E2E8F0;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+    .nav-wrapper {
+      max-width: 1150px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #64748B;
+    }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+    @media (min-width: 768px) { .nav-links { gap: 1.5rem; } }
+    .nav-links a { text-decoration: none; color: inherit; display: flex; align-items: center; gap: 0.25rem; }
+    .nav-links a:hover { color: #1D4ED8; }
+    .nav-links a.active { color: #1D4ED8; font-weight: 700; }
+    .pill { background-color: #F1F5F9; color: #334155; padding: 2px 6px; border-radius: 4px; font-size: 10px; }
+    .pill-blue { background-color: #DBEAFE; color: #1E40AF; }
+
+    /* Main Container & Sections */
+    main { max-width: 1150px; margin: 0 auto; padding: 3rem 1.5rem; width: 100%; flex-grow: 1; }
+    .section-spacing { margin-bottom: 4rem; }
+    .card-section {
+      background-color: #FFFFFF;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1);
+      border: 1px solid rgba(226, 232, 240, 0.6);
+      scroll-margin-top: 5rem;
+    }
+    @media (min-width: 768px) { .card-section { padding: 2.5rem; } }
+
+    .sec-header { display: flex; align-items: center; gap: 0.75rem; border-bottom: 1px solid #F1F5F9; padding-bottom: 1.25rem; margin-bottom: 2rem; }
+    .sec-icon { padding: 0.625rem; border-radius: 0.75rem; display: flex; align-items: center; justify-content: center; }
+    .sec-icon.blue { background-color: #EFF6FF; color: #1D4ED8; }
+    .sec-icon.emerald { background-color: #D1FAE5; color: #047857; }
+    .sec-icon.dark { background-color: rgba(14, 165, 233, 0.1); color: #38BDF8; border: 1px solid rgba(56, 189, 248, 0.2); }
+    
+    .sec-header h2 { font-size: 1.5rem; font-weight: 700; color: #0F172A; letter-spacing: -0.025em; }
+    .sec-header p { color: #64748B; font-size: 0.75rem; margin-top: 0.125rem; }
+    @media (min-width: 768px) { .sec-header p { font-size: 0.875rem; } }
+
+    /* Layout Grids */
+    .grid-12 { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: center; }
+    @media (min-width: 1024px) { .grid-12 { grid-template-columns: repeat(12, 1fr); } }
+    .col-7 { grid-column: span 1; }
+    .col-5 { grid-column: span 1; }
+    @media (min-width: 1024px) { 
+      .col-7 { grid-column: span 7; } 
+      .col-5 { grid-column: span 5; } 
+    }
+
+    .grid-3 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media (min-width: 768px) { .grid-3 { grid-template-columns: repeat(3, 1fr); } }
+
+    /* Content Styling */
+    .text-content { color: #475569; font-size: 0.875rem; line-height: 1.625; }
+    @media (min-width: 768px) { .text-content { font-size: 1rem; } }
+    .text-content p { margin-bottom: 1rem; }
+
+    /* Cards */
     .interactive-card {
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .interactive-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
     }
+
+    .media-card {
+      border-radius: 1rem;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      border: 1px solid #F1F5F9;
+      background-color: #FFFFFF;
+      padding: 0.75rem;
+    }
+    .media-card img { width: 100%; height: 13rem; object-fit: cover; border-radius: 0.75rem; margin-bottom: 1rem; }
+    .media-card-body { background-color: #0F172A; padding: 0.75rem; border-radius: 0.75rem; color: #FFFFFF; }
+    .media-card-title { color: #38BDF8; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.25rem; margin-bottom: 0.25rem; }
+    .media-card-desc { font-size: 11px; color: #CBD5E1; font-weight: 300; }
+
+    .info-box {
+      background-color: #F8FAFC;
+      border: 1px solid rgba(226, 232, 240, 0.6);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      font-size: 0.75rem;
+      color: #475569;
+      font-weight: 300;
+    }
+    .info-box h4 { font-weight: 700; color: #0F172A; text-transform: uppercase; letter-spacing: 0.05em; display: flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid #E2E8F0; padding-bottom: 0.5rem; margin-bottom: 0.75rem; }
+
+    /* Dark Lab Section */
+    .dark-section {
+      background-color: #020617;
+      color: #FFFFFF;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #1E293B;
+      scroll-margin-top: 5rem;
+    }
+    @media (min-width: 768px) { .dark-section { padding: 2.5rem; } }
+    .dark-section .sec-header { border-bottom-color: #1E293B; }
+    .dark-section .sec-header h2 { color: #FFFFFF; }
+    .dark-section .sec-header p { color: #94A3B8; }
+
+    .lab-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; margin-bottom: 2.5rem; font-size: 0.75rem; font-weight: 300; }
+    @media (min-width: 1024px) { .lab-grid { grid-template-columns: repeat(3, 1fr); font-size: 0.875rem; } }
+    .lab-box { background-color: #0F172A; border: 1px solid #1E293B; padding: 1rem; border-radius: 0.75rem; }
+    .lab-box-title { font-weight: 700; display: block; text-transform: uppercase; letter-spacing: 0.05em; font-size: 11px; margin-bottom: 0.25rem; }
+
+    /* Prompt Box */
+    .prompt-box {
+      background-color: #020617;
+      color: #CBD5E1;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      position: relative;
+      font-family: monospace;
+      font-size: 0.75rem;
+      border: 1px solid #1E293B;
+      box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+      margin-top: 1rem;
+    }
+    @media (min-width: 768px) { .prompt-box { font-size: 0.875rem; } }
+    .prompt-btn {
+      position: absolute;
+      right: 0.75rem;
+      top: 0.75rem;
+      background-color: #0284C7;
+      color: #FFFFFF;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.375rem 0.75rem;
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.375rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.2s;
+    }
+    .prompt-btn:hover { background-color: #0369A1; }
+    .prompt-code { white-space: pre-line; padding-right: 4rem; padding-top: 1rem; line-height: 1.625; color: #94A3B8; user-select: all; }
+
+    /* Step Timeline */
+    .steps-timeline { border-left: 1px solid #1E293B; padding-left: 1.5rem; margin-left: 0.5rem; position: relative; }
+    .step-item { position: relative; margin-bottom: 2rem; }
+    .step-number {
+      position: absolute;
+      left: -2.2rem;
+      top: 0.125rem;
+      background-color: #0F172A;
+      color: #CBD5E1;
+      border: 1px solid #334155;
+      width: 1.25rem;
+      height: 1.25rem;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      background-color: #0F172A;
+      border: 1px solid #1E293B;
+      color: #FFFFFF;
+      font-size: 0.875rem;
+      padding: 1rem 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transform: translateY(1rem);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 50;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .toast-icon { width: 1.25rem; height: 1.25rem; background-color: #10B981; color: #020617; border-radius: 9999px; display: flex; align-items: center; justify-content: center; }
+
+    /* Footer */
+    footer { background-color: #020617; color: #94A3B8; text-align: center; padding: 2rem 1.5rem; border-top: 1px solid #0F172A; font-size: 0.75rem; }
+    .footer-logos { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.5rem; margin-bottom: 1rem; }
+    .footer-logos img { height: 40px; width: auto; object-fit: contain; border-radius: 6px; background-color: rgba(255,255,255,0.9); padding: 4px; }
   </style>
 </head>
-<body class="text-slate-800 min-h-screen flex flex-col justify-between antialiased">
+<body>
 
-  <header class="bg-[#0B192E] text-white py-16 px-6 md:px-12 relative overflow-hidden shadow-xl border-b border-slate-800">
-    <div class="absolute -right-24 -top-24 w-96 h-96 bg-blue-600 opacity-10 rounded-full blur-3xl"></div>
-    <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center mix-blend-overlay opacity-10"></div>
+  <!-- HEADER -->
+  <header class="gradient-brand header">
+    <div style="position: absolute; right: -6rem; top: -6rem; width: 24rem; height: 24rem; background-color: #2563EB; opacity: 0.1; border-radius: 9999px; filter: blur(48px);"></div>
 
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-center gap-8 relative z-10">
-      <div class="max-w-3xl">
+    <div class="header-container">
+      <div>
+        <div class="brand-logos">
+          <img src="cropped-logo-cetasdi-actualizado.jpg.jpeg" alt="Logo Cetasdi" onerror="this.style.display='none'">
+          <img src="logo-la-ceja.png" alt="Logo La Ceja" onerror="this.style.display='none'">
+          <img src="logo-la-ceja-cuida-y-florece.png" alt="Logo La Ceja Cuida y Florece" onerror="this.style.display='none'">
+        </div>
+
+        <div class="badges-flex">
+          <span class="badge-mod">Módulo 2 Renovado</span>
+          <span class="badge-sub">Taller de Co-Creación de Contenidos</span>
+        </div>
+
+        <h1>Creación de Contenido Turístico <br style="display: none;" class="md-inline">con Nuevas Herramientas de IA</h1>
         
-        <div class="flex flex-wrap items-center gap-4 mb-6">
-          <img src="cropped-logo-cetasdi-actualizado.jpg.jpeg" alt="Logo Cetasdi" class="h-12 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
-          <img src="logo-la-ceja.png" alt="Logo La Ceja" class="h-12 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
-          <img src="logo-la-ceja-cuida-y-florece.png" alt="Logo La Ceja Cuida y Florece" class="h-12 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
-        </div>
-
-        <div class="flex flex-wrap items-center gap-2">
-          <span class="bg-amber-500 text-slate-950 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-md shadow-sm">Módulo 2 Renovado</span>
-          <span class="bg-slate-900 text-blue-300 text-xs font-semibold px-2.5 py-1 rounded-md border border-blue-800">Taller de Co-Creación de Contenidos</span>
-        </div>
-        <h1 class="text-4xl md:text-5xl font-black mt-4 tracking-tight leading-tight text-white">
-          Creación de Contenido Turístico <br class="hidden md:inline">con Nuevas Herramientas de IA
-        </h1>
-        <p class="text-slate-300 mt-4 text-base md:text-lg leading-relaxed font-normal max-w-2xl">
+        <p>
           Estructura de <strong>6 horas académicas</strong>. Domina el copywriting en tiempo real con Gemini, la síntesis visual comercial en Adobe Firefly y la maquetación inteligente automatizada con Gamma App.
         </p>
       </div>
       
-      <div class="bg-slate-900 border border-slate-700/60 rounded-2xl p-6 text-center min-w-[200px] shadow-2xl shrink-0 self-stretch md:self-auto flex flex-col justify-center">
-        <span class="block text-xs text-amber-400 font-bold uppercase tracking-wider">Carga Académica</span>
-        <span class="block text-4xl font-black text-white my-1">6 Horas</span>
-        <div class="text-[11px] text-slate-400 block border-t border-slate-800 pt-2 mt-2 font-medium">
-          <div class="flex justify-between mb-1"><span>Estrategia y Copy</span><span class="text-white">2h</span></div>
-          <div class="flex justify-between"><span>Diseño y Ensamble</span><span class="text-white">4h</span></div>
+      <div class="academic-card">
+        <span class="tag">Carga Académica</span>
+        <div class="hours">6 Horas</div>
+        <div class="breakdown">
+          <div class="row"><span>Estrategia y Copy</span><span style="color: #FFFFFF;">2h</span></div>
+          <div class="row"><span>Diseño y Ensamble</span><span style="color: #FFFFFF;">4h</span></div>
         </div>
       </div>
     </div>
   </header>
 
-  <div class="bg-white border-b border-slate-200 py-4 px-6 sticky top-0 z-40 shadow-sm backdrop-blur-md bg-white/95">
-    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4 text-xs font-semibold uppercase tracking-wider text-slate-500">
-      <span class="flex items-center gap-1.5 text-slate-900 font-bold"><i data-lucide="compass" class="w-4 h-4 text-blue-600"></i> Ruta de Aprendizaje:</span>
-      <div class="flex flex-wrap gap-4 md:gap-6">
-        <a href="#copywriting" class="hover:text-blue-700 transition-colors flex items-center gap-1"><span>01. Real-Time Copy</span> <span class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded text-[10px]">1h</span></a>
-        <a href="#itinerarios" class="hover:text-blue-700 transition-colors flex items-center gap-1"><span>02. Itinerarios Locales</span> <span class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded text-[10px]">1h</span></a>
-        <a href="#ecosistema-visual" class="hover:text-blue-700 transition-colors flex items-center gap-1"><span>03. Fusión Multi-IA</span> <span class="bg-slate-100 text-slate-700 px-1.5 py-0.5 rounded text-[10px]">1h</span></a>
-        <a href="#laboratorio-dos" class="text-blue-700 font-bold flex items-center gap-1"><span>04. Taller de Alto Impacto</span> <span class="bg-blue-100 text-blue-800 px-1.5 py-0.5 rounded text-[10px]">3h</span></a>
+  <!-- NAVEGACIÓN STICKY -->
+  <div class="sticky-nav">
+    <div class="nav-wrapper">
+      <span style="display: flex; align-items: center; gap: 0.375rem; color: #0F172A; font-weight: 700;">
+        <i data-lucide="compass" style="width: 1rem; height: 1rem; color: #2563EB;"></i> Ruta de Aprendizaje:
+      </span>
+      <div class="nav-links">
+        <a href="#copywriting"><span>01. Real-Time Copy</span> <span class="pill">1h</span></a>
+        <a href="#itinerarios"><span>02. Itinerarios Locales</span> <span class="pill">1h</span></a>
+        <a href="#ecosistema-visual"><span>03. Fusión Multi-IA</span> <span class="pill">1h</span></a>
+        <a href="#laboratorio-dos" class="active"><span>04. Taller de Alto Impacto</span> <span class="pill pill-blue">3h</span></a>
       </div>
     </div>
   </div>
 
-  <main class="max-w-6xl mx-auto px-4 md:px-8 py-12 w-full flex-grow space-y-16">
+  <!-- MAIN -->
+  <main>
     
-    <section id="copywriting" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-slate-200/60 scroll-mt-20">
-      <div class="flex items-center gap-3 border-b border-slate-100 pb-5 mb-8">
-        <div class="p-2.5 bg-blue-50 rounded-xl text-blue-700">
-          <i data-lucide="sparkles" class="w-6 h-6"></i>
-        </div>
+    <!-- SECCIÓN 1 -->
+    <section id="copywriting" class="card-section section-spacing">
+      <div class="sec-header">
+        <div class="sec-icon blue"><i data-lucide="sparkles" style="width: 1.5rem; height: 1.5rem;"></i></div>
         <div>
-          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">1. Copywriting Turístico e Indexación en Tiempo Real</h2>
-          <p class="text-slate-500 text-xs md:text-sm mt-0.5">Aprovechamiento del motor analítico de Google Gemini para redactar textos comerciales basados en tendencias actuales.</p>
+          <h2>1. Copywriting Turístico e Indexación en Tiempo Real</h2>
+          <p>Aprovechamiento del motor analítico de Google Gemini para redactar textos comerciales basados en tendencias actuales.</p>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7 space-y-5 text-slate-600 leading-relaxed text-sm md:text-base">
+      <div class="grid-12">
+        <div class="col-7 text-content">
           <p>
             Al avanzar en la creación de contenido, el estudiante debe aprender a conectar las necesidades de su audiencia con las tendencias del entorno. <strong>Google Gemini</strong> ofrece la ventaja de conectarse de forma nativa a internet en tiempo real para rastrear qué buscan los viajeros en Antioquia.
           </p>
@@ -95,14 +420,12 @@
           </p>
         </div>
 
-        <div class="lg:col-span-5 relative group">
-          <div class="relative rounded-2xl overflow-hidden shadow-md border border-slate-100 bg-white p-3">
-            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Escritura digital creativa" class="w-full h-52 object-cover rounded-xl mb-4">
-            <div class="px-2 py-2 bg-slate-900 rounded-xl text-white">
-              <span class="block text-xs font-bold uppercase tracking-wider text-sky-400 mb-1 flex items-center gap-1">
-                <i data-lucide="globe" class="w-3 h-3"></i> Conexión en Vivo e Insights
-              </span>
-              <p class="text-[11px] text-slate-300 font-light leading-normal">
+        <div class="col-5">
+          <div class="media-card">
+            <img src="https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=600&q=80" alt="Escritura digital creativa">
+            <div class="media-card-body">
+              <span class="media-card-title"><i data-lucide="globe" style="width: 0.75rem; height: 0.75rem;"></i> Conexión en Vivo e Insights</span>
+              <p class="media-card-desc">
                 Gemini integra datos actualizados de eventos locales, como el flujo de visitantes en las Fiestas del Toldo y las Flores, para redactar propuestas precisas.
               </p>
             </div>
@@ -111,19 +434,18 @@
       </div>
     </section>
 
-    <section id="itinerarios" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-slate-200/60 scroll-mt-20">
-      <div class="flex items-center gap-3 border-b border-slate-100 pb-5 mb-8">
-        <div class="p-2.5 bg-blue-50 rounded-xl text-blue-700">
-          <i data-lucide="map-pinned" class="w-6 h-6"></i>
-        </div>
+    <!-- SECCIÓN 2 -->
+    <section id="itinerarios" class="card-section section-spacing">
+      <div class="sec-header">
+        <div class="sec-icon blue"><i data-lucide="map-pinned" style="width: 1.5rem; height: 1.5rem;"></i></div>
         <div>
-          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">2. Diseño de Itinerarios Turísticos con Identidad Territorial</h2>
-          <p class="text-slate-500 text-xs md:text-sm mt-0.5">Planificación cronológica y estructuración de rutas que destaquen el patrimonio y los atractivos de La Ceja.</p>
+          <h2>2. Diseño de Itinerarios Turísticos con Identidad Territorial</h2>
+          <p>Planificación cronológica y estructuración de rutas que destaquen el patrimonio y los atractivos de La Ceja.</p>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div class="lg:col-span-2 space-y-4 text-slate-600 text-sm md:text-base leading-relaxed">
+      <div class="grid-3">
+        <div style="grid-column: span 2;" class="text-content">
           <p>
             Un portafolio turístico competitivo no vende camas ni platos de comida sueltos; vende días memorables de experiencias organizadas. El uso de la IA permite a los prestadores locales estructurar hojas de ruta reales, calculando distancias, tiempos de descanso y paradas estratégicas.
           </p>
@@ -132,155 +454,150 @@
           </p>
         </div>
         
-        <div class="bg-slate-50 border border-slate-200/60 rounded-2xl p-5 space-y-3 font-light text-xs text-slate-600">
-          <h4 class="font-bold text-slate-900 uppercase tracking-wider flex items-center gap-2 border-b border-slate-200 pb-2">
-            <i data-lucide="calendar-days" class="w-4 h-4 text-blue-600"></i> Matriz de Planificación Diaria
-          </h4>
-          <p><strong>Mañana Inmersiva:</strong> Recorrido guiado por senderos ecológicos locales o fincas de hortensias.</p>
-          <p><strong>Tarde Gastronómica:</strong> Almuerzo tradicional y ruta de postres artesanales en los toldos del parque.</p>
+        <div class="info-box">
+          <h4><i data-lucide="calendar-days" style="width: 1rem; height: 1rem; color: #2563EB;"></i> Matriz de Planificación Diaria</h4>
+          <p style="margin-bottom: 0.5rem;"><strong>Mañana Inmersiva:</strong> Recorrido guiado por senderos ecológicos locales o fincas de hortensias.</p>
+          <p style="margin-bottom: 0.5rem;"><strong>Tarde Gastronómica:</strong> Almuerzo tradicional y ruta de postres artesanales en los toldos del parque.</p>
           <p><strong>Cierre Cultural:</strong> Talleres manuales interactivos de diseño floral o catas de café de origen.</p>
         </div>
       </div>
     </section>
 
-    <section id="ecosistema-visual" class="bg-white rounded-3xl p-6 md:p-10 shadow-sm border border-slate-200/60 scroll-mt-20">
-      <div class="flex items-center gap-3 border-b border-slate-100 pb-5 mb-8">
-        <div class="p-2.5 bg-emerald-50 rounded-xl text-emerald-700">
-          <i data-lucide="repeat" class="w-6 h-6"></i>
-        </div>
+    <!-- SECCIÓN 3 -->
+    <section id="ecosistema-visual" class="card-section section-spacing">
+      <div class="sec-header">
+        <div class="sec-icon emerald"><i data-lucide="repeat" style="width: 1.5rem; height: 1.5rem;"></i></div>
         <div>
-          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">3. Orquestación Multi-IA Avanzada: El Flujo Alternativo</h2>
-          <p class="text-slate-500 text-xs md:text-sm mt-0.5">Estudio de herramientas alternativas para ampliar las competencias digitales del estudiante.</p>
+          <h2>3. Orquestación Multi-IA Avanzada: El Flujo Alternativo</h2>
+          <p>Estudio de herramientas alternativas para ampliar las competencias digitales del estudiante.</p>
         </div>
       </div>
 
-      <p class="text-slate-600 text-sm md:text-base mb-8 max-w-4xl">
+      <p style="color: #475569; font-size: 0.875rem; margin-bottom: 2rem; max-width: 56rem; line-height: 1.625;">
         Para enriquecer el perfil técnico de tus alumnos, el flujo de producción del Módulo 2 integrará tres plataformas totalmente diferentes a las del Módulo 1, logrando un proceso de ensamble ágil y profesional:
       </p>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 font-light">
-        <div class="border border-slate-200 rounded-2xl p-5 bg-white shadow-sm flex flex-col justify-between">
+      <div class="grid-3">
+        <div style="border: 1px solid #E2E8F0; border-radius: 1rem; padding: 1.25rem; background-color: #FFFFFF; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="w-9 h-9 rounded-xl bg-sky-100 text-sky-700 flex items-center justify-center mb-4 font-bold text-sm">1</div>
-            <h3 class="font-bold text-slate-900 text-base">Google Gemini</h3>
-            <span class="text-slate-400 text-xs font-medium block mt-0.5 mb-2">Lógica Estratégica y Texto</span>
-            <p class="text-slate-600 text-xs md:text-sm leading-relaxed">Asume la estructura del plan de marketing. Redacta el copy bajo la fórmula AIDA, organiza las paradas lógicas del itinerario y genera las descripciones visuales técnicas.</p>
+            <div style="width: 2.25rem; height: 2.25rem; border-radius: 0.75rem; background-color: #E0F2FE; color: #0369A1; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-weight: 700; font-size: 0.875rem;">1</div>
+            <h3 style="font-weight: 700; color: #0F172A; font-size: 1rem;">Google Gemini</h3>
+            <span style="color: #94A3B8; font-size: 0.75rem; font-weight: 500; display: block; margin-top: 0.125rem; margin-bottom: 0.5rem;">Lógica Estratégica y Texto</span>
+            <p style="color: #475569; font-size: 0.875rem; line-height: 1.625; font-weight: 300;">Asume la estructura del plan de marketing. Redacta el copy bajo la fórmula AIDA, organiza las paradas lógicas del itinerario y genera las descripciones visuales técnicas.</p>
           </div>
         </div>
-        <div class="border border-slate-200 rounded-2xl p-5 bg-white shadow-sm flex flex-col justify-between">
+
+        <div style="border: 1px solid #E2E8F0; border-radius: 1rem; padding: 1.25rem; background-color: #FFFFFF; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="w-9 h-9 rounded-xl bg-orange-100 text-orange-700 flex items-center justify-center mb-4 font-bold text-sm">2</div>
-            <h3 class="font-bold text-slate-900 text-base">Adobe Firefly</h3>
-            <span class="text-slate-400 text-xs font-medium block mt-0.5 mb-2">Síntesis Gráfica Comercial</span>
-            <p class="text-slate-600 text-xs md:text-sm leading-relaxed">Interpreta los prompts artísticos. Genera fotografías publicitarias hiperrealistas de los entornos andinos de La Ceja sin problemas de derechos de autor.</p>
+            <div style="width: 2.25rem; height: 2.25rem; border-radius: 0.75rem; background-color: #FFEDD5; color: #C2410C; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-weight: 700; font-size: 0.875rem;">2</div>
+            <h3 style="font-weight: 700; color: #0F172A; font-size: 1rem;">Adobe Firefly</h3>
+            <span style="color: #94A3B8; font-size: 0.75rem; font-weight: 500; display: block; margin-top: 0.125rem; margin-bottom: 0.5rem;">Síntesis Gráfica Comercial</span>
+            <p style="color: #475569; font-size: 0.875rem; line-height: 1.625; font-weight: 300;">Interpreta los prompts artísticos. Genera fotografías publicitarias hiperrealistas de los entornos andinos de La Ceja sin problemas de derechos de autor.</p>
           </div>
         </div>
-        <div class="border border-slate-200 rounded-2xl p-5 bg-white shadow-sm flex flex-col justify-between">
+
+        <div style="border: 1px solid #E2E8F0; border-radius: 1rem; padding: 1.25rem; background-color: #FFFFFF; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); display: flex; flex-direction: column; justify-content: space-between;">
           <div>
-            <div class="w-9 h-9 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center mb-4 font-bold text-sm">3</div>
-            <h3 class="font-bold text-slate-900 text-base">Gamma App</h3>
-            <span class="text-slate-400 text-xs font-medium block mt-0.5 mb-2">Maquetación Automatizada Express</span>
-            <p class="text-slate-600 text-xs md:text-sm leading-relaxed">Actúa como la mesa de ensamble gráfico modular. Genera de forma inteligente carruseles visuales interactivos organizando texto e imágenes mediante algoritmos.</p>
+            <div style="width: 2.25rem; height: 2.25rem; border-radius: 0.75rem; background-color: #E0E7FF; color: #4338CA; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-weight: 700; font-size: 0.875rem;">3</div>
+            <h3 style="font-weight: 700; color: #0F172A; font-size: 1rem;">Gamma App</h3>
+            <span style="color: #94A3B8; font-size: 0.75rem; font-weight: 500; display: block; margin-top: 0.125rem; margin-bottom: 0.5rem;">Maquetación Automatizada Express</span>
+            <p style="color: #475569; font-size: 0.875rem; line-height: 1.625; font-weight: 300;">Actúa como la mesa de ensamble gráfico modular. Genera de forma inteligente carruseles visuales interactivos organizando texto e imágenes mediante algoritmos.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="laboratorio-dos" class="bg-slate-950 text-white rounded-3xl p-6 md:p-10 shadow-2xl relative overflow-hidden border border-slate-800 scroll-mt-20">
-      <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-sky-600 opacity-10 rounded-full blur-3xl"></div>
-      
-      <div class="flex items-center gap-3 border-b border-slate-800 pb-5 mb-8">
-        <div class="p-2.5 bg-sky-500/10 text-sky-400 rounded-xl border border-sky-500/20">
-          <i data-lucide="package" class="w-6 h-6"></i>
-        </div>
+    <!-- SECCIÓN 4 (LABORATORIO) -->
+    <section id="laboratorio-dos" class="dark-section">
+      <div class="sec-header">
+        <div class="sec-icon dark"><i data-lucide="package" style="width: 1.5rem; height: 1.5rem;"></i></div>
         <div>
-          <h2 class="text-2xl md:text-3xl font-bold tracking-tight">4. Laboratorio de Alta Competitividad: Carrusel Turístico Premium</h2>
-          <p class="text-slate-400 text-xs md:text-sm mt-0.5">Reto práctico avanzado de 3 horas orquestando un flujo continuo de Inteligencias Artificiales cruzadas.</p>
+          <h2>4. Laboratorio de Alta Competitividad: Carrusel Turístico Premium</h2>
+          <p>Reto práctico avanzado de 3 horas orquestando un flujo continuo de Inteligencias Artificiales cruzadas.</p>
         </div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-10 text-xs md:text-sm font-light">
-        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
-          <span class="text-sky-400 font-bold block uppercase tracking-wider text-[11px] mb-1">El Desafío Comercial</span>
-          <span class="text-slate-300">Diseñar un carrusel o dossier publicitario digital de alta definición para vender una experiencia o ruta exclusiva en el municipio de La Ceja, Antioquia.</span>
+      <div class="lab-grid">
+        <div class="lab-box">
+          <span class="lab-box-title" style="color: #38BDF8;">El Desafío Comercial</span>
+          <span>Diseñar un carrusel o dossier publicitario digital de alta definición para vender una experiencia o ruta exclusiva en el municipio de La Ceja, Antioquia.</span>
         </div>
-        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
-          <span class="text-emerald-400 font-bold block uppercase tracking-wider text-[11px] mb-1">Ecosistema Alternativo</span>
-          <span class="text-slate-300">Fase 1: Google Gemini (Estructura AIDA) <br>Fase 2: DeepL (Traducción de Estilo) <br>Fase 3: Adobe Firefly o Bing Image Creator <br>Fase 4: Gamma App (Ensamble y maquetación final).</span>
+        <div class="lab-box">
+          <span class="lab-box-title" style="color: #34D399;">Ecosistema Alternativo</span>
+          <span>Fase 1: Google Gemini (Estructura AIDA) <br>Fase 2: DeepL (Traducción de Estilo) <br>Fase 3: Adobe Firefly o Bing Image Creator <br>Fase 4: Gamma App (Ensamble y maquetación final).</span>
         </div>
-        <div class="bg-slate-900 border border-slate-800 p-4 rounded-xl">
-          <span class="text-orange-400 font-bold block uppercase tracking-wider text-[11px] mb-1">Producto Final Entregable</span>
-          <span class="text-slate-300">Enlace de acceso a la pieza digital finalizada compartida desde Gamma App junto con la bitácora técnica de prompts en PDF.</span>
+        <div class="lab-box">
+          <span class="lab-box-title" style="color: #FB923C;">Producto Final Entregable</span>
+          <span>Enlace de acceso a la pieza digital finalizada compartida desde Gamma App junto con la bitácora técnica de prompts en PDF.</span>
         </div>
       </div>
 
-      <h3 class="text-lg font-bold text-slate-200 mb-6 flex items-center gap-2">
-        <i data-lucide="play-circle" class="w-5 h-5 text-sky-400"></i> Protocolo de Trabajo Técnico Avanzado (3 Horas de Ejecución)
+      <h3 style="font-size: 1.125rem; font-weight: 700; color: #E2E8F0; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem;">
+        <i data-lucide="play-circle" style="width: 1.25rem; height: 1.25rem; color: #38BDF8;"></i> Protocolo de Trabajo Técnico Avanzado (3 Horas de Ejecución)
       </h3>
 
-      <div class="space-y-8 text-sm md:text-base text-slate-300 border-l border-slate-800 pl-6 ml-2 relative">
+      <div class="steps-timeline">
         
-        <div class="relative">
-          <div class="absolute -left-[35px] top-0.5 bg-slate-900 text-slate-300 border border-slate-700 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shadow-md">1</div>
-          <h4 class="font-bold text-white text-base">Fase 1: Ingeniería de Contenidos y Redacción AIDA en Gemini (45 Minutos)</h4>
-          <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed">
-            Ingresa al modelo conversacional <a href="https://gemini.google.com" target="_blank" class="text-sky-400 underline hover:text-sky-300">Google Gemini</a>. Personaliza las variables entre corchetes <code>[ ]</code> del siguiente prompt maestro y ejecútalo para estructurar la base de tu contenido promocional.
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <h4 style="font-weight: 700; color: #FFFFFF; font-size: 1rem;">Fase 1: Ingeniería de Contenidos y Redacción AIDA en Gemini (45 Minutos)</h4>
+          <p style="color: #94A3B8; font-size: 0.875rem; margin-top: 0.25rem; line-height: 1.625;">
+            Ingresa al modelo conversacional <a href="https://gemini.google.com" target="_blank" style="color: #38BDF8; text-decoration: underline;">Google Gemini</a>. Personaliza las variables entre corchetes <code>[ ]</code> del siguiente prompt maestro y ejecútalo para estructurar la base de tu contenido promocional.
           </p>
 
-          <div class="bg-slate-950 text-slate-300 rounded-xl p-5 relative font-mono text-xs md:text-sm border border-slate-800 shadow-inner mt-4">
-            <button onclick="copyPromptToClipboard('prompt-m2-texto')" class="absolute right-3 top-3 bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold py-1.5 px-3 rounded-lg flex items-center gap-1.5 transition-colors shadow shadow-black">
-              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copiar Prompt de Texto
+          <div class="prompt-box">
+            <button onclick="copyPromptToClipboard('prompt-m2-texto')" class="prompt-btn">
+              <i data-lucide="copy" style="width: 0.875rem; height: 0.875rem;"></i> Copiar Prompt de Texto
             </button>
-            <div id="prompt-m2-texto" class="whitespace-pre-line pr-16 pt-4 leading-relaxed text-slate-400 select-all">
-              [ROL]: Actúa como un redactor publicitario senior (Copywriter) especializado en marketing turístico y desarrollo de portafolios comerciales para el Oriente Antioqueño.
-              [CONTEXTO]: Estoy diseñando un contenido digital premium para mi negocio turístico ubicado en el municipio de La Ceja, Antioquia. Mi producto consiste en [Escribe con precisión qué es tu negocio o ruta, ej: un tour guiado de biciturismo por las fincas floricultoras / tardes de café y repostería artesanal tradicional en los toldos]. Mi público objetivo son profesionales y familias de Medellín que buscan experiencias de fin de semana con identidad local.
-              [TAREA]: Desarrolla los siguientes bloques de contenido para mi campaña comercial de forma obligatoria y separada:
-          1. Un título persuasivo de alto impacto y un subtítulo centrado en el beneficio.
-          2. Un cuerpo de texto comercial aplicando la fórmula AIDA (Atención, Interés, Deseo, Acción) que incentive la reserva.
-          3. Un micro-itinerario cronológico de 3 momentos sugeridos para vivir en la experiencia.
-          4. Una instrucción visual de diseño detallada en inglés (Prompt Visual) optimizada para generar una fotografía publicitaria fotorrealista del entorno.
-          5. SECCIÓN ADICIONAL: Un listado exclusivo con exactamente 5 palabras clave estéticas en español que definan la atmósfera, el color y la iluminación de la escena.
-          [ESPECIFICACIÓN]: Presenta los resultados organizados de forma limpia con títulos claros para cada uno de los 5 puntos. Mantén un tono elegante, hospitalario y altamente corporativo.
-
+            <div id="prompt-m2-texto" class="prompt-code">
+[ROL]: Actúa como un redactor publicitario senior (Copywriter) especializado en marketing turístico y desarrollo de portafolios comerciales para el Oriente Antioqueño.
+[CONTEXTO]: Estoy diseñando un contenido digital premium para mi negocio turístico ubicado en el municipio de La Ceja, Antioquia. Mi producto consiste en [Escribe con precisión qué es tu negocio o ruta, ej: un tour guiado de biciturismo por las fincas floricultoras / tardes de café y repostería artesanal tradicional en los toldos]. Mi público objetivo son profesionales y familias de Medellín que buscan experiencias de fin de semana con identidad local.
+[TAREA]: Desarrolla los siguientes bloques de contenido para mi campaña comercial de forma obligatoria y separada:
+1. Un título persuasivo de alto impacto y un subtítulo centrado en el beneficio.
+2. Un cuerpo de texto comercial aplicando la fórmula AIDA (Atención, Interés, Deseo, Acción) que incentive la reserva.
+3. Un micro-itinerario cronológico de 3 momentos sugeridos para vivir en la experiencia.
+4. Una instrucción visual de diseño detallada en inglés (Prompt Visual) optimizada para generar una fotografía publicitaria fotorrealista del entorno.
+5. SECCIÓN ADICIONAL: Un listado exclusivo con exactamente 5 palabras clave estéticas en español que definan la atmósfera, el color y la iluminación de la escena.
+[ESPECIFICACIÓN]: Presenta los resultados organizados de forma limpia con títulos claros para cada uno de los 5 puntos. Mantén un tono elegante, hospitalario y highly corporativo.
             </div>
           </div>
         </div>
 
-        <div class="relative">
-          <div class="absolute -left-[35px] top-0.5 bg-slate-900 text-slate-300 border border-slate-700 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shadow-md">2</div>
-          <h4 class="font-bold text-white text-base">Fase 2: Traducción Técnica Estética con DeepL (15 Minutos)</h4>
-          <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed">
-            Toma las 5 palabras clave estéticas en español generadas en el paso anterior. Ingresa al traductor inteligente <a href="https://www.deepl.com" target="_blank" class="text-teal-400 underline font-semibold">DeepL.com</a> y tradúcelas al inglés. Al usar DeepL asegurarás que los modismos estéticos técnicos (ej: <em>"Golden Hour", "Cinematic lighting", "Moody atmosphere"</em>) se mantengan intactos, optimizando la posterior lectura del motor visual.
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <h4 style="font-weight: 700; color: #FFFFFF; font-size: 1rem;">Fase 2: Traducción Técnica Estética con DeepL (15 Minutos)</h4>
+          <p style="color: #94A3B8; font-size: 0.875rem; margin-top: 0.25rem; line-height: 1.625;">
+            Toma las 5 palabras clave estéticas en español generadas en el paso anterior. Ingresa al traductor inteligente <a href="https://www.deepl.com" target="_blank" style="color: #2DD4BF; font-weight: 600; text-decoration: underline;">DeepL.com</a> y tradúcelas al inglés. Al usar DeepL asegurarás que los modismos estéticos técnicos (ej: <em>"Golden Hour", "Cinematic lighting", "Moody atmosphere"</em>) se mantengan intactos, optimizando la posterior lectura del motor visual.
           </p>
         </div>
 
-        <div class="relative">
-          <div class="absolute -left-[35px] top-0.5 bg-slate-900 text-slate-300 border border-slate-700 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shadow-md">3</div>
-          <h4 class="font-bold text-white text-base">Fase 3: Renderizado Fotográfico de Entornos (1 Hora)</h4>
-          <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed mb-4">
-            Abre tu motor de generación visual sintética estática (<a href="https://firefly.adobe.com" target="_blank" class="text-orange-400 underline font-semibold">Adobe Firefly</a> o <a href="https://www.bing.com/images/create" target="_blank" class="text-sky-400 underline font-semibold">Bing Image Creator</a>). Construye una instrucción en inglés combinando el tema de tu negocio de La Ceja junto con las palabras estéticas que tradujiste en DeepL.
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <h4 style="font-weight: 700; color: #FFFFFF; font-size: 1rem;">Fase 3: Renderizado Fotográfico de Entornos (1 Hora)</h4>
+          <p style="color: #94A3B8; font-size: 0.875rem; margin-top: 0.25rem; margin-bottom: 1rem; line-height: 1.625;">
+            Abre tu motor de generación visual sintética estática (<a href="https://firefly.adobe.com" target="_blank" style="color: #FB923C; font-weight: 600; text-decoration: underline;">Adobe Firefly</a> o <a href="https://www.bing.com/images/create" target="_blank" style="color: #38BDF8; font-weight: 600; text-decoration: underline;">Bing Image Creator</a>). Construye una instrucción en inglés combinando el tema de tu negocio de La Ceja junto con las palabras estéticas que tradujiste en DeepL.
           </p>
-          <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 text-xs text-slate-400 space-y-3">
+          <div style="background-color: #0F172A; border: 1px solid #1E293B; border-radius: 0.75rem; padding: 1.25rem; font-size: 0.75rem; color: #94A3B8; display: flex; flex-direction: column; gap: 0.75rem;">
             <p>• <strong>Si utilizas Bing Image Creator:</strong> El sistema procesará imágenes cuadradas en escala 1:1 por defecto, ideales para cuadrículas de redes sociales.</p>
             <p>• <strong>Si utilizas Adobe Firefly:</strong> Podrás configurar el menú lateral para elegir dimensiones de aspecto horizontal o vertical según requiera tu diseño corporativo.</p>
           </div>
-          <p class="text-slate-400 text-xs md:text-sm mt-4">Ejecuta las generaciones de prueba, aplica filtros de fotografía hiperrealista y descarga en alta resolución las piezas de mayor fidelidad visual.</p>
+          <p style="color: #94A3B8; font-size: 0.875rem; margin-top: 1rem;">Ejecuta las generaciones de prueba, aplica filtros de fotografía hiperrealista y descarga en alta resolución las piezas de mayor fidelidad visual.</p>
         </div>
 
-        <div class="relative">
-          <div class="absolute -left-[35px] top-0.5 bg-slate-900 text-slate-300 border border-slate-700 w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shadow-md">4</div>
-          <h4 class="font-bold text-white text-base">Fase 4: Maquetación y Ensamble Automatizado en Gamma App (1 Hora)</h4>
-          <p class="text-slate-400 text-xs md:text-sm mt-1 leading-relaxed">
-            Ingresa a la suite <a href="https://gamma.app" target="_blank" class="text-emerald-400 underline font-semibold">Gamma.app</a> de forma gratuita. Seguiremos este protocolo para estructurar tu pieza final de forma fluida:
+        <div class="step-item" style="margin-bottom: 0;">
+          <div class="step-number">4</div>
+          <h4 style="font-weight: 700; color: #FFFFFF; font-size: 1rem;">Fase 4: Maquetación y Ensamble Automatizado en Gamma App (1 Hora)</h4>
+          <p style="color: #94A3B8; font-size: 0.875rem; margin-top: 0.25rem; line-height: 1.625;">
+            Ingresa a la suite <a href="https://gamma.app" target="_blank" style="color: #34D399; font-weight: 600; text-decoration: underline;">Gamma.app</a> de forma gratuita. Seguiremos este protocolo para estructurar tu pieza final de forma fluida:
           </p>
-          <div class="mt-4 bg-slate-900 border border-slate-800 p-4 rounded-xl text-xs md:text-sm space-y-2 font-light">
-            <span class="text-slate-200 block font-bold mb-1"><i data-lucide="check-square" class="w-4 h-4 text-emerald-400 inline mr-1 shadow-sm"></i> Protocolo de Armado en Gamma:</span>
+          <div style="margin-top: 1rem; background-color: #0F172A; border: 1px solid #1E293B; padding: 1rem; border-radius: 0.75rem; font-size: 0.875rem; display: flex; flex-direction: column; gap: 0.5rem; font-weight: 300;">
+            <span style="color: #E2E8F0; display: block; font-weight: 700; margin-bottom: 0.25rem;"><i data-lucide="check-square" style="width: 1rem; height: 1rem; color: #34D399; display: inline; margin-right: 0.25rem;"></i> Protocolo de Armado en Gamma:</span>
             <p>1. En el panel principal, haz clic en el botón superior <strong>"Crear nuevo con IA"</strong> y selecciona la alternativa de cuadro de comandos de texto.</p>
             <p>2. Elige el formato corto seleccionando la categoría de <strong>"Post para redes sociales / Carrusel"</strong> o documento modular.</p>
             <p>3. En el recuadro de información, copia y pega los textos persuasivos con la estructura AIDA y el micro-itinerario cronológico generados por Gemini en la Fase 1.</p>
             <p>4. Selecciona un tema de estilo visual que combine tonos limpios y profesionales. La IA organizará de forma automática los textos dentro de tarjetas informativas separadas.</p>
             <p>5. Reemplaza las imágenes de stock genéricas del lienzo arrastrando y soltando la fotografía publicitaria fotorrealista que descargaste en la Fase 3 de Adobe Firefly.</p>
-            <p>6. Haz clic en el menú superior </strong>"Compartir" &rarr; "Publicar en la web"</strong>, copia el enlace público interactivo y añádelo a tu bitácora técnica en PDF para subir la entrega formal a la plataforma del curso.</p>
+            <p>6. Haz clic en el menú superior <strong>"Compartir" &rarr; "Publicar en la web"</strong>, copia el enlace público interactivo y añádelo a tu bitácora técnica en PDF para subir la entrega formal a la plataforma del curso.</p>
           </div>
         </div>
 
@@ -289,30 +606,30 @@
 
   </main>
 
-  <div id="toast-notif" class="fixed bottom-6 right-6 bg-slate-900 border border-slate-800 text-white text-sm py-4 px-6 rounded-2xl shadow-2xl flex items-center gap-3 transform translate-y-4 opacity-0 pointer-events-none transition-all duration-300 z-50">
-    <div class="w-5 h-5 bg-emerald-500 text-slate-950 rounded-full flex items-center justify-center shadow shadow-emerald-400"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
-    <span class="font-medium text-xs md:text-sm">Estructura del prompt de contenido copiada con éxito.</span>
+  <!-- TOAST ALERTA -->
+  <div id="toast-notif" class="toast">
+    <div class="toast-icon"><i data-lucide="check" style="width: 0.875rem; height: 0.875rem;"></i></div>
+    <span style="font-weight: 500; font-size: 0.875rem;">Estructura del prompt de contenido copiada con éxito.</span>
   </div>
 
-  <footer class="bg-slate-950 text-slate-400 text-center py-8 px-6 border-t border-slate-900 text-xs">
-    <div class="max-w-6xl mx-auto space-y-2">
-      
-      <div class="flex flex-wrap items-center justify-center gap-6 mb-4">
-        <img src="cropped-logo-cetasdi-actualizado.jpg.jpeg" alt="Logo Cetasdi" class="h-10 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
-        <img src="logo-la-ceja.png" alt="Logo La Ceja" class="h-10 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
-        <img src="logo-la-ceja-cuida-y-florece.png" alt="Logo La Ceja Cuida y Florece" class="h-10 w-auto object-contain rounded-md bg-white/90 p-1 shadow-sm">
+  <!-- FOOTER -->
+  <footer>
+    <div style="max-width: 1150px; margin: 0 auto;">
+      <div class="footer-logos">
+        <img src="cropped-logo-cetasdi-actualizado.jpg.jpeg" alt="Logo Cetasdi" onerror="this.style.display='none'">
+        <img src="logo-la-ceja.png" alt="Logo La Ceja" onerror="this.style.display='none'">
+        <img src="logo-la-ceja-cuida-y-florece.png" alt="Logo La Ceja Cuida y Florece" onerror="this.style.display='none'">
       </div>
-
-      <p class="font-bold text-slate-200 text-sm tracking-wide">La Ceja de las Flores y las Bicicletas - Territorio Turístico Inteligente</p>
-      <p class="text-slate-500">Programa Internacional de Innovación y Alta Competitividad Comercial con Inteligencia Artificial.</p>
+      <p style="font-weight: 700; color: #E2E8F0; font-size: 0.875rem; margin-bottom: 0.25rem;">La Ceja de las Flores y las Bicicletas - Territorio Turístico Inteligente</p>
+      <p style="color: #64748B;">Programa Internacional de Innovación y Alta Competitividad Comercial con Inteligencia Artificial.</p>
     </div>
   </footer>
 
   <script>
-    // Inicializa los íconos de la librería Lucide
-    lucide.createIcons();
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
 
-    // Sistema seguro para copiar código de texto en el portapapeles
     function copyPromptToClipboard(id) {
       const contenidoPrompt = document.getElementById(id).innerText;
       
@@ -323,15 +640,11 @@
       document.execCommand("copy");
       document.body.removeChild(elementoAuxiliar);
 
-      // Despliegue visual de la alerta Toast
       const toast = document.getElementById("toast-notif");
-      toast.classList.remove("opacity-0", "translate-y-4", "pointer-events-none");
-      toast.classList.add("opacity-100", "translate-y-0");
+      toast.classList.add("show");
 
-      // Ocultar notificación de forma automática
       setTimeout(() => {
-        toast.classList.add("opacity-0", "translate-y-4", "pointer-events-none");
-        toast.classList.remove("opacity-100", "translate-y-0");
+        toast.classList.remove("show");
       }, 3500);
     }
   </script>
